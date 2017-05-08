@@ -1,0 +1,579 @@
+//#ifndef WEISSLIST_H
+//#define WEISSLIST_H
+
+#include <iostream>
+#include <string>
+#include <list>
+
+using namespace std;
+
+
+template <typename Object>
+class List
+{
+public:
+  
+  struct Node
+  {
+    Object data;
+    Node *prev, *next;
+
+    Node( const Object & d = Object( ), Node *p = NULL, Node *n = NULL )
+      : data( d ), prev( p ), next( n ) { }
+  };
+ 
+
+public:  class const_iterator
+  {
+  public:
+    const_iterator( ) : current( NULL ) { }
+
+    // Overloaded operator* -- for dereferencing
+   const Object & operator* ( ) const { return retrieve( ); }
+
+    // Overloaded pre-increment operator++
+    const_iterator & operator++ ( )
+    {
+      current = current->next;
+      return *this;
+    }
+
+    // Overloaded post-increment operator++
+    const_iterator operator++ ( int )
+    {
+      const_iterator old = *this;
+      ++( *this );
+      return old;
+    }
+
+    // Overloaded pre-decrement operator--
+    const_iterator & operator-- ( )
+    {
+      current = current->prev;
+      return *this;
+    }
+
+    // Overloaded post-decrement operator--
+    const_iterator operator-- ( int )
+    {
+      const_iterator old = *this;
+      --( *this );
+      return old;
+    }
+
+    bool operator== ( const const_iterator & rhs ) const
+      { return current == rhs.current; }
+    bool operator!= ( const const_iterator & rhs ) const
+      { return !( *this == rhs ); }
+
+  //protected:
+    Node *current;
+
+    Object & retrieve( ) const { return current->data; }
+    const_iterator( Node *p ) : current( p ) { }
+
+    friend class List<Object>;
+  };
+  //--- end class const_iterator
+
+  /*-------------------------------------------------------
+   * Class iterator (as a nested class)
+   * ----------------------------------
+   * The non-const version of the iterator for List.
+   * It is implemented as a derived class from const_iterator only so that
+   * some members don't have to be duplicated from const_iterator.
+   * Most functions are same as those in const_iterator, except
+   * const_iterator is changed to iterator, and some 'const' are removed.
+   *------------------------------------------------------*/
+  class iterator : public const_iterator
+  {
+  public:
+    iterator( ) { }
+   // Object & operator* ( ) { return retrieve( ); }
+    const Object & operator* ( ) const { return const_iterator::operator*( ); }
+
+    const iterator & operator++ ( )
+    { 
+       
+      this->current = this->current->next;
+      return *this;
+    }
+
+    iterator operator++ ( int )
+    {
+      iterator old = *this;
+      ++( *this );
+      return old;
+    }
+
+    iterator & operator-- ( )
+    {
+      this->current = this->current->prev;
+      return *this;
+    }
+
+    iterator operator-- ( int )
+    {
+      iterator old = *this;
+      --( *this );
+      return old;
+    }
+
+  protected:
+    iterator( Node *p ) : const_iterator( p ) { }
+    friend class List<Object>;
+  };
+  
+public:
+  List();
+  List(const List & rhs);
+  ~List();
+  const List & operator=(const List & rhs);
+
+  iterator begin() { return iterator(head->next); }
+  const_iterator begin() const { return const_iterator(head->next); }
+  iterator end() { return iterator(tail); }
+  const_iterator end() const { return const_iterator(tail); }
+
+  //
+  // Additional functions which return an iterator to the (dummy) tail and head nodes
+  //
+  iterator rbegin() { return iterator(tail->prev); }
+  const_iterator rbegin() const { return const_iterator(tail->prev); }
+  iterator rend() { return iterator(head); }
+  const_iterator rend() const { return const_iterator(head); }
+
+  int size() const { return theSize; }
+  bool empty() const { return size() == 0; }
+
+  void clear()
+  {
+    while (!empty())
+        pop_front();
+  }
+
+  Object & front( ) { return *begin( ); }
+  const Object & front( ) const { return *begin( ); }
+  Object & back( ) { return *--end( ); }
+  const Object & back( ) const { return *--end( ); }
+
+  void push_front( const Object & x ) { insert( begin( ), x ); }
+  void push_back( const Object & x ) { insert( end( ), x ); }
+
+  void pop_front( ) { erase( begin( ) ); }
+  void pop_back( ) { erase( --end( ) ); }
+
+  // Insert x before itr.
+  iterator insert( iterator itr, const Object & x )
+  {
+    Node *p = itr.current;
+    theSize++;
+    return iterator( p->prev = p->prev->next = new Node( x, p->prev, p ) );
+  }
+
+  // Erase item/node at itr.
+  iterator erase( iterator itr )
+  {
+    Node *p = itr.current;
+    iterator retVal( p->next );
+    p->prev->next = p->next;
+    p->next->prev = p->prev;
+    delete p;
+    theSize--;
+
+    return retVal;
+  }
+
+  iterator erase( iterator from, iterator to )
+  {
+    for( iterator itr = from; itr != to; )
+      itr = erase( itr );
+
+    return to;
+  }
+
+  //---------------------------------------------------------
+  // Some additions from the class exercises
+  //---------------------------------------------------------
+  void splice(iterator position, List & lst)
+  {
+    Node* ptr = position.current;
+    Node* lstHead = lst.head;
+    Node* lstTail = lst.tail;
+
+    ptr->prev->next = lstHead->next;
+    lstHead->next->prev = ptr->prev;
+
+    lstTail->prev->next = ptr;
+    ptr->prev = lstTail->prev;
+
+    lstHead->next = lstTail;
+    lstTail->prev = lstHead;
+
+    theSize += lst.theSize;
+    lst.theSize = 0;
+  }
+
+
+  //********************************************************
+  //
+  // For HW#2 -- WRITE YOUR CODE HERE
+  //
+  //********************************************************
+
+void printListForward(List & lst)
+{
+  iterator it = lst.begin();
+  while (it != lst.end())
+    cout << *it++ << " ";
+  cout << endl;
+}
+void printListBackward(List & lst)
+{
+  iterator it = lst.rbegin();
+  while (it != lst.rend())
+    cout << *it-- << " ";
+  cout << endl;
+}
+
+
+
+
+void splice(iterator  position, List & lst, iterator first, iterator last){
+    Node* ptr = position.current;
+    //iterator head=first;
+     //iterator tail=last;
+     
+     
+    Node* lstHead = lst.head;
+    Node* lstTail = lst.tail;
+    for( iterator itr = lst.begin() ; itr != lst.end()  ;itr++ )
+	{
+	   if(itr==first)
+	   {
+	   
+	       lstHead=lstHead->next;
+	       
+           lst.theSize -= 1;
+        }
+    }
+    
+     for( iterator itr = lst.end() ; itr !=lst.begin()   ;itr-- )
+	{
+	   if(itr==last)
+	   {
+	   
+	       lstTail=lstTail->prev;
+	       
+           lst.theSize -= 1;
+        }
+    }
+    
+
+    ptr->prev->next = lstHead->next;
+    lstHead->next->prev = ptr->prev;
+
+    lstTail->prev->next = ptr;
+    ptr->prev = lstTail->prev;
+
+    lstHead->next = lstTail;
+    lstTail->prev = lstHead;
+
+    theSize += lst.theSize;
+   
+
+}
+
+
+void remove(const Object& val){
+iterator itr = begin();
+	for( iterator itr = begin() ; itr != end()  ;itr++ )
+	{
+	   if(itr.retrieve() ==val)
+      { //cout<<itr.retrieve();
+       erase( itr );
+      }
+    }
+	
+
+}
+void reduce1(){
+	
+	iterator cur1 = begin();
+	iterator temp=++cur1;
+	iterator temp1=++temp;
+	iterator temp2=++temp1;
+	iterator temp3=++temp2;
+	iterator temp4=++temp3;
+	 
+	    	 
+    for(  iterator itr = temp4; itr != end()  ;itr++ )
+	{
+	
+	      if( temp4.retrieve()==itr.retrieve())
+		  {
+	      	erase(itr );
+	      	
+	      }
+    }
+	
+	    
+}
+
+void reduce(){
+	
+	iterator cur1 = begin();
+	 iterator temp=++cur1;
+	  
+	 
+   	 
+    for( iterator itr = temp; itr != end()  ;itr++ )
+	{
+	
+	      if(cur1.retrieve() ==itr.retrieve())
+		  {
+	      	erase(itr );
+	      	
+	      }
+	  
+	  
+	}
+	
+	    
+}
+void unique()
+{
+	
+	for(int i=1;i<=4;i++){
+		reduce();}
+	 iterator cur1 = begin();
+	 iterator temp=++cur1;
+	 iterator temp1=++temp;
+	 iterator itr;
+	for(  itr = temp; itr != end()  ;itr++ )
+	{
+	
+	      if(cur1.retrieve() ==itr.retrieve())
+		  {
+	      	erase(itr );
+	      	
+	      }
+	  
+	  
+	}
+   	 
+    for(  itr = ++temp; itr != end()  ;itr++ )
+	{
+	
+	      if(temp1.retrieve() ==itr.retrieve())
+		  {
+	      	erase(itr );
+	      	
+	      }
+	  
+	  
+	}
+reduce1() ; 
+	    
+	    
+	
+}
+
+	  
+	
+
+
+
+
+
+
+
+private:
+  int theSize;
+  Node *head, *tail;
+
+  void init( );
+};
+// -- end class List
+
+/*===========================================
+ * member function definitions for class List
+ *===========================================*/
+template <typename Object>
+List<Object>::List( ) { init( ); }
+
+template <typename Object>
+List<Object>::List( const List & rhs )
+{
+  init( );
+  *this = rhs;
+}
+
+template <typename Object>
+List<Object>::~List( )
+{
+  clear( );
+  delete head;
+  delete tail;
+}
+
+template <typename Object>
+const List<Object> & List<Object>::operator= ( const List & rhs )
+{
+  if( this == &rhs )
+    return *this;
+  clear( );
+  for( const_iterator itr = rhs.begin( ); itr != rhs.end( ); ++itr )
+    push_back( *itr );
+  return *this;
+}
+
+template <typename Object>
+void List<Object>::init( )
+{
+  theSize = 0;
+  head = new Node;
+  tail = new Node;
+  head->next = tail;
+  tail->prev = head;
+}
+
+//#endif
+
+
+
+
+
+
+int main()
+{
+  const int SIZE = 7;
+  string sarray[SIZE] = {"aa", "bb", "cc", "xx", "yy", "zz", "oo"};
+
+  cout << "=========================\n";
+  cout << "  (1) Splice()\n";
+  cout << "=========================\n";
+
+  List<string> slist1, slist2;
+  slist1.push_back(sarray[0]);
+  slist1.push_back(sarray[1]);
+  slist1.push_back(sarray[2]);// so far in slist1 has (aa,bb,cc)
+  cout << "slist1 (size = " << slist1.size() << "): \n";//It would print out 3 for size
+  cout << " Forward:  ";
+  slist1.printListForward(slist1); cout << endl;// We can also send lists to the functions
+
+  slist2.push_back(sarray[3]);
+  slist2.push_back(sarray[4]);
+  slist2.push_back(sarray[5]);
+  slist2.push_back(sarray[6]);// slist2 has the elements (xx,yy,zz,oo)
+  cout << "slist2 (size = " << slist2.size() << "): \n";//It would print out 4 for size
+  cout << " Forward:  ";
+  slist2.printListForward(slist2);
+
+  cout << endl;
+
+  List<string>::iterator it = slist1.begin();//Here we declare our first iterator and we place it in position 1
+  it++; // then it points to "bb"
+
+  List<string>::iterator it2 = slist2.begin();
+  it2++; // it2 points to "yy"
+  List<string>::iterator it3 = slist2.end();
+  it3--; // it3 points to "oo"
+
+  cout << "  --- Splicing [" << *it2 << ", " << *it3 << ") from slist2 at " << *it << " in slist1 ---\n\n";
+  slist1.splice(it, slist2, it2, it3); // (aa, yy,zz,bb,cc)
+
+  cout << "slist1 (size = " << slist1.size() << "): \n";
+  cout << " Forward:  ";
+  slist1.printListForward(slist1); //cout << endl;
+  cout << " Backward: ";
+  slist1.printListBackward(slist1); cout << endl;
+  cout << "slist2 (size = " << slist2.size() << "): \n";
+  cout << " Forward:  ";
+  slist2.printListForward(slist2); //cout << endl;
+  cout << " Backward: ";
+  slist2.printListBackward(slist2); cout << endl;
+  system("pause");
+
+  // -- Test for remove()
+  cout << "=========================\n";
+  cout << "  (2) Remove()\n";
+  cout << "=========================\n";
+
+  slist1.clear();
+  slist1.push_back(sarray[3]); // "xx"
+  slist1.push_back(sarray[0]); slist1.push_back(sarray[1]); slist1.push_back(sarray[2]);
+  slist1.push_back(sarray[3]); // "xx"
+  slist1.push_back(sarray[4]); slist1.push_back(sarray[5]);
+  slist1.push_back(sarray[3]); // "xx"
+  cout << "slist1 (size = " << slist1.size() << "): \n";
+  cout << " Forward:  ";
+  slist1.printListForward(slist1); cout << endl;
+  cout << "  --- After remove(\"xx\") ---\n";
+  slist1.remove("xx");
+
+  cout << "slist1 (size = " << slist1.size() << "): \n";
+  cout << " Forward:  ";
+  slist1.printListForward(slist1); //cout << endl;
+  cout << " Backward: ";
+  slist1.printListBackward(slist1); cout << endl;
+
+  cout << "=== Another test ===\n";
+  it = slist1.begin(); ++it;  ++it;
+  slist1.insert(it, "cc"); slist1.insert(it, "cc");
+  slist1.insert(--(slist1.end()), "cc");
+
+  cout << "slist1 (size = " << slist1.size() << "): \n";
+  cout << " Forward:  ";
+  slist1.printListForward(slist1); cout << endl;
+  cout << "  --- After remove(\"cc\") ---\n";
+  slist1.remove("cc");
+
+  cout << "slist1 (size = " << slist1.size() << "): \n";
+  cout << " Forward:  ";
+  slist1.printListForward(slist1); //cout << endl;
+  cout << " Backward: ";
+  slist1.printListBackward(slist1); cout << endl;
+
+  cout << "  --- After remove(\"xx\") ---\n";
+  slist1.remove("xx");
+
+  cout << "slist1 (size = " << slist1.size() << "): \n";
+  cout << " Forward:  ";
+  slist1.printListForward(slist1); //cout << endl;
+  cout << " Backward: ";
+  slist1.printListBackward(slist1); cout << endl;
+  system("pause");
+
+  // -- Test for unique()
+  cout << "=========================\n";
+  cout << "  (3) Unique()\n";
+  cout << "=========================\n";
+
+  //  First set up slist1
+  it = ++(slist1.begin());
+  slist1.insert(it, *it); slist1.insert(it, *it); slist1.insert(it, *it);
+  ++it;
+  slist1.insert(it, *it); slist1.insert(it, *it);
+  slist1.push_front(sarray[0]); slist1.push_front(sarray[0]); slist1.push_front(sarray[0]); slist1.push_front(sarray[0]);
+  slist1.push_back(sarray[2]); slist1.push_back(sarray[2]); slist1.push_back(sarray[2]); slist1.push_back(sarray[2]);
+  slist1.push_back(sarray[3]);
+
+  cout << "slist1 (size = " << slist1.size() << "): \n";
+  cout << " Forward:  ";
+  slist1.printListForward(slist1); cout << endl;
+
+  cout << "  --- After unique() ---\n";
+  slist1.unique();
+
+  cout << "slist1 (size = " << slist1.size() << "): \n";
+  cout << " Forward:  ";
+  slist1.printListForward(slist1); //cout << endl;
+  cout << " Backward: ";
+  slist1.printListBackward(slist1); cout << endl;
+
+  system("Pause");
+  return 0;
+}
+
+//#endif

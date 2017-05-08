@@ -1,0 +1,98 @@
+#ifndef DATE_H
+#define DATE_H
+#include <string>
+#include <iostream>
+using namespace std;
+
+string Month[]={"" , "January", "Febraury", "March", "April", "May", "June", "July",
+	"August", "September", "October", "November", "December"};
+
+int daysInMonth[2][13] = { { 0,31,28,31,30,31,30,31,31,30,31,30,31} ,
+							{ 0,31,29,31,30,31,30,31,31,30,31,30,31} };
+string DOW[] = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturady"};
+class Date{
+
+private:
+	int *month ;
+	int *day ;
+	int *year ;
+
+public:
+
+	// constructors
+
+	Date(int month, int day, int year) ;
+	Date()  ;     // default constructor
+
+	Date(Date &other) ;  // copy constructor
+	Date(string mmddyyyy) ;  // constructor that takes a string as parameter e.g "10/31/2012"
+
+	~Date() ;
+
+	// overlaod assignment operator 
+
+	Date & operator=(Date & rhs) ;
+	Date & operator++() ;
+	Date & operator++(int) ;
+	Date & operator--() ;
+	Date & operator--(int) ;
+	bool operator ==(Date & rhs) ;
+	bool operator != (Date & rhs) ;
+	bool operator > (Date & rhs) ;
+	bool operator < (Date & rhs) ;
+
+	int operator-(Date & rhs) ;     
+	Date & operator+(int ) ;
+	
+
+
+	// accessors
+
+	int getDay() ;
+	int getMonth() ;
+	int getYear() ;
+
+	bool valid(int m, int d, int y);   // validate the triple is indeed a valid date
+	string toAscii(int n) ;		//  string representation of the integer
+	
+	static Date toDate(int doy, int yr) ;  // 
+
+	void display() ;   // display date in the format of   mm/day/year e.g. 10/31/2012
+		
+
+	string toString() ; // returns the string format of dayOfWeek Month Day, Year  e.g. Wednesday October 31, 2012
+
+
+
+	// returns true if the given year is a leap year and false otherwise
+
+	static int isLeap(int year) {
+
+	     return (( year % 400 == 0  ) || ( year % 4 == 0  && year % 100 != 0 )) ;
+   }
+
+	// returns the day code the the new year day of the given year
+
+	static int get_day_code( int year ) {
+                return ( year + ( year - 1 ) / 4 - ( year - 1 ) / 100
+                             + ( year - 1 ) / 400 ) % 7;
+   }
+	// overloading get_day_code that returns the day code of the specific day
+	
+	static int get_day_code(int year, int month , int day);
+
+	
+	
+
+	int dayOfWeek();		// return the day code of this day ;
+	
+
+
+	int dayOfYear() ; 		// returns the day of the year, eg,  the day of year for Feb 28 is 59.
+
+
+
+
+};
+
+#endif

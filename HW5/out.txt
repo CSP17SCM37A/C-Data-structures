@@ -1,0 +1,152 @@
+
+
+Calendar 2016 FEB
+
+Sun  Mon  Tue  Wed  Thu  Fri  Sat
+       1    2    3    4    5    6
+  7    8    9   10   11   12   13
+ 14   15   16   17   18   19   20
+ 21   22   23   24   25   26   27
+ 28   29  
+
+Calendar 2016
+
+
+
+	Jan
+
+Sun  Mon  Tue  Wed  Thu  Fri  Sat
+                           1    2
+  3    4    5    6    7    8    9
+ 10   11   12   13   14   15   16
+ 17   18   19   20   21   22   23
+ 24   25   26   27   28   29   30
+ 31  
+
+	FEB
+
+Sun  Mon  Tue  Wed  Thu  Fri  Sat
+       1    2    3    4    5    6
+  7    8    9   10   11   12   13
+ 14   15   16   17   18   19   20
+ 21   22   23   24   25   26   27
+ 28   29  
+
+	MAR
+
+Sun  Mon  Tue  Wed  Thu  Fri  Sat
+            1    2    3    4    5
+  6    7    8    9   10   11   12
+ 13   14   15   16   17   18   19
+ 20   21   22   23   24   25   26
+ 27   28   29   30   31  
+
+	APR
+
+Sun  Mon  Tue  Wed  Thu  Fri  Sat
+                           1    2
+  3    4    5    6    7    8    9
+ 10   11   12   13   14   15   16
+ 17   18   19   20   21   22   23
+ 24   25   26   27   28   29   30
+
+
+	MAY
+
+Sun  Mon  Tue  Wed  Thu  Fri  Sat
+  1    2    3    4    5    6    7
+  8    9   10   11   12   13   14
+ 15   16   17   18   19   20   21
+ 22   23   24   25   26   27   28
+ 29   30   31  
+
+	JUN
+
+Sun  Mon  Tue  Wed  Thu  Fri  Sat
+                 1    2    3    4
+  5    6    7    8    9   10   11
+ 12   13   14   15   16   17   18
+ 19   20   21   22   23   24   25
+ 26   27   28   29   30  
+
+	JUL
+
+Sun  Mon  Tue  Wed  Thu  Fri  Sat
+                           1    2
+  3    4    5    6    7    8    9
+ 10   11   12   13   14   15   16
+ 17   18   19   20   21   22   23
+ 24   25   26   27   28   29   30
+ 31  
+
+	AUG
+
+Sun  Mon  Tue  Wed  Thu  Fri  Sat
+       1    2    3    4    5    6
+  7    8    9   10   11   12   13
+ 14   15   16   17   18   19   20
+ 21   22   23   24   25   26   27
+ 28   29   30   31  
+
+	SEP
+
+Sun  Mon  Tue  Wed  Thu  Fri  Sat
+                      1    2    3
+  4    5    6    7    8    9   10
+ 11   12   13   14   15   16   17
+ 18   19   20   21   22   23   24
+ 25   26   27   28   29   30  
+
+	OCT
+
+Sun  Mon  Tue  Wed  Thu  Fri  Sat
+                                1
+  2    3    4    5    6    7    8
+  9   10   11   12   13   14   15
+ 16   17   18   19   20   21   22
+ 23   24   25   26   27   28   29
+ 30   31  
+
+	NOV
+
+Sun  Mon  Tue  Wed  Thu  Fri  Sat
+            1    2    3    4    5
+  6    7    8    9   10   11   12
+ 13   14   15   16   17   18   19
+ 20   21   22   23   24   25   26
+ 27   28   29   30  
+
+	DEC
+
+Sun  Mon  Tue  Wed  Thu  Fri  Sat
+                      1    2    3
+  4    5    6    7    8    9   10
+ 11   12   13   14   15   16   17
+ 18   19   20   21   22   23   24
+ 25   26   27   28   29   30   31
+
+
+
+	The important dates for year 2016
+	==========================================
+	NewYear             Fri Jan  1 2016     
+	MLK                 Mon Jan 18 2016     
+	ValentineDay        Sun FEB 14 2016     
+	PresidentDay        Mon FEB 15 2016     
+	StPatricksDay       Thu MAR 17 2016     
+	AprilFool           Fri APR  1 2016     
+	MothersDay          Sun MAY  8 2016     
+	MemorialDay         Mon MAY 30 2016     
+	FathersDay          Sun JUN 19 2016     
+	IndependenceDay     Mon JUL  4 2016     
+	LaborDay            Mon SEP  5 2016     
+	GrandparentDay      Sun SEP 11 2016     
+	ColumbusDay         Mon OCT 10 2016     
+	Halloween           Mon OCT 31 2016     
+	electionDay         Tue NOV  8 2016     
+	VeteransDay         Fri NOV 11 2016     
+	thanksgiving        Thu NOV 24 2016     
+	xmas                Sun DEC 25 2016     
+	dayLightSavingStart Sun MAR 13 2016     
+	dayLightSavingEnd   Sun NOV  6 2016     
+	==========================================

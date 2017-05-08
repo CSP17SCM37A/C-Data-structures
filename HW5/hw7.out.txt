@@ -1,0 +1,185 @@
+
+
+	Welcome to CSC404  Holidays/  Calendar System: 
+
+
+		Type 1 for major holidays 
+		Type 2 for Calendar  
+		Type 3 to quit.
+
+		Please enter your choice :1
+
+	Please enter the year (4 digits) or -1  to quit: 2013
+
+		Major holidays for year 2013
+
+	New Year Day         | Tuesday     1/1/2013             
+	MLK Birthday         | Monday      1/21/2013            
+	Valentine's Day      | Thursday    2/14/2013            
+	President Day        | Monday      2/18/2013            
+	St.Patrick's Day     | Sunday      3/17/2013            
+	April Fools          | Monday      4/1/2013             
+	May Day              | Wednesday   5/1/2013             
+	Mother's Day         | Sunday      5/12/2013            
+	Memorial Day         | Monday      5/27/2013            
+	Father's Day         | Sunday      6/16/2013            
+	Independence Day     | Thursday    7/4/2013             
+	Labor Day            | Monday      9/2/2013             
+	Columbus Day         | Monday      10/14/2013           
+	Halloween            | Thursday    10/31/2013           
+	Election Day         | Tuesday     11/5/2013            
+	Veterans Day         | Monday      11/11/2013           
+	Thanksgiving Day     | Thursday    11/28/2013           
+	Christmas            | Wednesday   12/25/2013           
+
+
+	Please enter the year (4 digits) or -1  to quit: -1
+
+		Type 1 for major holidays 
+		Type 2 for Calendar  
+		Type 3 to quit.
+
+		Please enter your choice :2
+
+	Do your want to write to a file? n
+	Please enter the year (4 digits) or -1  to quit: 2013
+
+
+January
+
+Sun  Mon  Tue  Wed  Thu  Fri  Sat
+            1    2    3    4    5
+  6    7    8    9   10   11   12
+ 13   14   15   16   17   18   19
+ 20   21   22   23   24   25   26
+ 27   28   29   30   31  
+
+February
+
+Sun  Mon  Tue  Wed  Thu  Fri  Sat
+                           1    2
+  3    4    5    6    7    8    9
+ 10   11   12   13   14   15   16
+ 17   18   19   20   21   22   23
+ 24   25   26   27   28  
+
+March
+
+Sun  Mon  Tue  Wed  Thu  Fri  Sat
+                           1    2
+  3    4    5    6    7    8    9
+ 10   11   12   13   14   15   16
+ 17   18   19   20   21   22   23
+ 24   25   26   27   28   29   30
+ 31  
+
+April
+
+Sun  Mon  Tue  Wed  Thu  Fri  Sat
+       1    2    3    4    5    6
+  7    8    9   10   11   12   13
+ 14   15   16   17   18   19   20
+ 21   22   23   24   25   26   27
+ 28   29   30  
+
+May
+
+Sun  Mon  Tue  Wed  Thu  Fri  Sat
+                 1    2    3    4
+  5    6    7    8    9   10   11
+ 12   13   14   15   16   17   18
+ 19   20   21   22   23   24   25
+ 26   27   28   29   30   31  
+
+June
+
+Sun  Mon  Tue  Wed  Thu  Fri  Sat
+                                1
+  2    3    4    5    6    7    8
+  9   10   11   12   13   14   15
+ 16   17   18   19   20   21   22
+ 23   24   25   26   27   28   29
+ 30  
+
+July
+
+Sun  Mon  Tue  Wed  Thu  Fri  Sat
+       1    2    3    4    5    6
+  7    8    9   10   11   12   13
+ 14   15   16   17   18   19   20
+ 21   22   23   24   25   26   27
+ 28   29   30   31  
+
+August
+
+Sun  Mon  Tue  Wed  Thu  Fri  Sat
+                      1    2    3
+  4    5    6    7    8    9   10
+ 11   12   13   14   15   16   17
+ 18   19   20   21   22   23   24
+ 25   26   27   28   29   30   31
+
+
+September
+
+Sun  Mon  Tue  Wed  Thu  Fri  Sat
+  1    2    3    4    5    6    7
+  8    9   10   11   12   13   14
+ 15   16   17   18   19   20   21
+ 22   23   24   25   26   27   28
+ 29   30  
+
+October
+
+Sun  Mon  Tue  Wed  Thu  Fri  Sat
+            1    2    3    4    5
+  6    7    8    9   10   11   12
+ 13   14   15   16   17   18   19
+ 20   21   22   23   24   25   26
+ 27   28   29   30   31  
+
+November
+
+Sun  Mon  Tue  Wed  Thu  Fri  Sat
+                           1    2
+  3    4    5    6    7    8    9
+ 10   11   12   13   14   15   16
+ 17   18   19   20   21   22   23
+ 24   25   26   27   28   29   30
+
+
+December
+
+Sun  Mon  Tue  Wed  Thu  Fri  Sat
+  1    2    3    4    5    6    7
+  8    9   10   11   12   13   14
+ 15   16   17   18   19   20   21
+ 22   23   24   25   26   27   28
+ 29   30   31  
+
+
+	Please enter the year (4 digits) or -1  to quit: -1
+
+		Type 1 for major holidays 
+		Type 2 for Calendar  
+		Type 3 to quit.
+
+		Please enter your choice :2
+
+	Do your want to write to a file? y
+
+	Please enter the file name: xxx    
+
+
+	Please enter the year (4 digits) or -1  to quit: -1
+		Type 1 for major holidays 
+		Type 2 for Calendar  
+		Type 3 to quit.
+
+		Please enter your choice :3
+
+	Thank you for using U.S. Major Holidays Calendar System! 
+
+
+		Bye! 
+

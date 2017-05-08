@@ -1,0 +1,28 @@
+Date newYear(int yr) ;  // Jan 1 st
+Date MLK(int yr) ; //  3rd monday of January
+
+Date ValentineDay (int yr) ; // Feb 14 
+Date PresidentDay(int yr) ;  // 3rd monday of February
+Date StPatricksDay(int yr) ;  //  march 17th
+Date AprilFool(int yr) ;  // April 1st
+
+Date MothersDay (int yr) ; // 2nd sunday of May
+Date MemorialDay(int yr) ; // last monday of May
+
+Date FathersDay(int yr) ; //  3rd sunday in June
+Date IndependenceDay(int yr) ;  // July 4
+
+
+Date LaborDay(int yr) ; // first monday of September
+Date GrandparentDay (int yr) ; // first sunday after Labor day (first monday of september
+Date ColumbusDay(int yr) ;  // 2nd monday of october
+
+Date Halloween(int yr) ;  // Oct 31st
+Date electionDay(int yr) ;  // tuesday after the first  monday
+Date VeteransDay(int yr) ; //  November 11 th
+Date thanksgiving(int yr) ; // 4th thursday of November
+
+Date xmas(int yr) ;  // dec 25
+
+Date dayLightSavingStart(int yr) ;  // 2nd sunday of march
+Date dayLightSavingEnd(int yr) ;  // 1st sunday in November
